@@ -20,6 +20,7 @@ public class Inicio {
     public Inicio(){
         lee = new Scanner(System.in);
         x=0;
+        Menu();
     }
      public void Menu(){
              System.out.println("[IPC1]Tarea3_201602574");
