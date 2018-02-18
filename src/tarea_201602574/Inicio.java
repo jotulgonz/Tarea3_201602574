@@ -195,13 +195,13 @@ public class Inicio {
          public void Digitos(){
              System.out.println("Ingrese un  numero no mayor a 100,000");
              System.out.println("Ingrese el Usuario");
-             System.out.println("\n"+"\n");
+             System.out.println("\n");
              numero = Integer.parseInt(lee.next());
              if(numero<100000){
              MenuDigitos();}
              else if(numero>100000){
                  System.out.println("Escriba un numero menor a 100,000");
-                 System.out.println("\n"+"\n");
+                 System.out.println("\n"+"________________________________");
                  Digitos();
              }
          }
@@ -209,7 +209,7 @@ public class Inicio {
          valor=numero/10;
              if(valor<1){
              System.out.println("Solo tiene 1 digito");
-             System.out.println("\n"+"\n");
+             System.out.println("\n"+"______________________________");
          }
              else if(valor>1){
                  digitos=valor;
@@ -222,5 +222,64 @@ public class Inicio {
              System.out.println("El numero ingresado, tiene:"+ contador +" digitos ");
              System.out.println("");
              MenuDigitos();
+         }
+         public void MenuTres(){
+         System.out.println("Menu");
+             System.out.println("Eliga una Opcion");
+             System.out.println("1. Ingresar Numeros");
+             System.out.println("2. Mostrar Ordenados");
+             System.out.println("3. Menu Principal");
+             System.out.println("_____________________________");
+             x = Integer.parseInt(lee.next());
+             
+             switch (x){      
+               case 1: 
+                   if (x!=0)
+                       TresNumeros();
+                   else
+                       System.out.println("Valor fuera del rango :O ");
+               break; 
+               case 2: 
+                   if (x!=1)
+                       MostrarTres();
+                   else
+                       System.out.println("Valor fuera del rango :O ");
+               break; 
+               case 3: 
+                   if (x!=2)
+                       Menu();
+                   else
+                       System.out.println("Valor fuera del rango :O ");
+               break; 
+             }
+         }
+         public void TresNumeros(){
+             
+             for(int i=0; i<3;i++){
+             Scanner sc = new Scanner(System.in);
+             System.out.println("Ingrese los numeros");
+             digi[i] = sc.nextInt();
+                          }
+             System.out.println("\n"+"____________________________");
+            MenuTres();
+         }
+         public void MostrarTres(){
+             int orden;        
+             for(int i=0;i<digi.length;i++){
+             for(int j=0;j<digi.length-1;j++){
+                 if (digi[j]>digi[j+1]) {
+                     orden=digi[j];
+                     digi[j]=digi[j+1];
+                     digi[j+1]=orden;
+                 }
+             }
+         
+                 }
+             for (int i = 0; i < digi.length; i++) {
+                 System.out.println("EL orden es   "+digi[i]);
+                 System.out.println("");
+             }
+             System.out.println("\n"+"_____________________________");
+             MenuTres();
          }
 }
