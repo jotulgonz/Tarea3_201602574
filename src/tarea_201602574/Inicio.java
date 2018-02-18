@@ -31,6 +31,7 @@ public class Inicio {
         x=0;//Inicializamos el entero
         leeProm = new Scanner(System.in);//Este escanner sirve para Guardar los datos de la matriz
         f=6;//Inicializamos el entero
+        c=6;//Inicializamos el entero
         valor=0;//Inicializamos el entero
         SumaF=0;//Inicializamos el entero
         Menu();//nos lleva al metodo menu
@@ -60,19 +61,19 @@ public class Inicio {
                break; 
                case 2: 
                    if (x!=1)
-                       System.out.println("");
+                   MenuDigitos();
                    else
                        System.out.println("Valor fuera del rango :O ");
                break; 
                case 3: 
                    if (x!=2)
-                       System.out.println("");
+                       MenuTres();
                    else
                        System.out.println("Valor fuera del rango :O ");
                break; 
                case 4: 
                    if (x!=3)
-                       System.out.println("");
+                       MenuPromedio();
                    else
                        System.out.println("Valor fuera del rango :O ");
                break; 
@@ -315,7 +316,7 @@ public class Inicio {
          public void IngreseNotas(){
              System.out.println("Notas De Estudiantes");
              for (int f = 0; f < matriz.length; f++) {
-                 for (int c = 1; c < matriz[f].length; c++) {
+                 for (int c =1; c < 5; c++) {
                      System.out.println("Ingrese Las notas");
                      matriz[f][c]=leeProm.nextInt();
                      System.out.println("["+f+","+c+"]=" + matriz[f][c]);
@@ -336,16 +337,18 @@ public class Inicio {
              matriz[5][0]=6;
              for (int f = 0; f < matriz.length; f++) {
                  SumaF=0;
-                 for (int c = 0; c < matriz.length; c++) {
+                 for (int c = 0; c <5; c++) {
                      System.out.print("["+matriz[f][c]+"]"+"\t");
                  }
-                 for (int c = 1; c < matriz.length; c++) {
+                 for (int c = 1; c < 5; c++) {
                      SumaF+=matriz[f][c];
                  }
-                 System.out.println("Promedio Es:"+"["+SumaF/5+"]");
+                 System.out.println("["+SumaF/4+"]"+"⊲--- Es el Promedio");
+                 
                  System.out.println("");
+                 
              }
-             System.out.println("\n"+"\n");
+             System.out.println("___________________________________________________________");
              MenuPromedio();
          }
 }
