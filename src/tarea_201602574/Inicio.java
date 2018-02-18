@@ -13,14 +13,27 @@ import java.util.Scanner;
  */
 public class Inicio {
     //usuarios
-        String[] usuarios = new String[5];
-        int Ingresados;
-        int x;
-        Scanner lee;
+        String[] usuarios = new String[5];//Este es el vetor de tamaño 5
+        int x;// Es el entero para ingresar en los menus
+        Scanner lee;// Este escanner sirve para Guardar los datos en el vector
+         //digitos
+        int numero,digitos,contador,valor;
+        //Tres Ordenados
+        int digi[] = new int[3];
+        //Promedio
+        Scanner leeProm;// Este escanner sirve para Guardar los datos de la matriz 
+        int matriz [][] = new int [6][6];
+        int filas,columnas;
+        int SumaF;
+        int f,c;
     public Inicio(){
-        lee = new Scanner(System.in);
-        x=0;
-        Menu();
+        lee = new Scanner(System.in);//Este escanner sirve para Guardar los datos del vector
+        x=0;//Inicializamos el entero
+        leeProm = new Scanner(System.in);//Este escanner sirve para Guardar los datos de la matriz
+        f=6;//Inicializamos el entero
+        valor=0;//Inicializamos el entero
+        SumaF=0;//Inicializamos el entero
+        Menu();//nos lleva al metodo menu
     }
      public void Menu(){
              System.out.println("[IPC1]Tarea3_201602574");
@@ -32,7 +45,7 @@ public class Inicio {
              System.out.println("3. Tres números de mayor a menor");
              System.out.println("4. Calcular Promedio");
              System.out.println("5. Salir");
-             System.out.println("\n"+"\n");
+             System.out.println("___________________________________");
              try{ //trat de convertir un string en numerico y si da error lo catchea 
             x = Integer.parseInt(lee.next());
          }catch(Exception ioe){ System.out.println("El valor debe de ser numerico"); x = 100;}
@@ -63,7 +76,7 @@ public class Inicio {
                    else
                        System.out.println("Valor fuera del rango :O ");
                break; 
-               case 5: 
+               case 5:  
                    if (x!=4)
                        System.out.println("Hasta la Próxima O/");
                    System.exit(0);
@@ -77,7 +90,7 @@ public class Inicio {
              System.out.println("2. Mostrar Usuarios Ascendentes");
              System.out.println("3. Mostrar Usuarios Descendentes");
              System.out.println("4. Menu Principal");
-             System.out.println("\n"+"\n");
+             System.out.println("___________________________________");
              
              x = Integer.parseInt(lee.next());
              
@@ -148,5 +161,66 @@ public class Inicio {
                  System.out.println(valor);
              }
              MenuUsuarios();
+         }
+         public void MenuDigitos(){
+         System.out.println("Menu Digitos");
+             System.out.println("Eliga una Opcion");
+             System.out.println("1. Ingresar Numero");
+             System.out.println("2. Mostrar Numero de digitos");
+             System.out.println("3. Menu Principal");
+             System.out.println("__________________________________");
+             x = Integer.parseInt(lee.next());
+             
+             switch (x){      
+               case 1: 
+                   if (x!=0)
+                       Digitos();
+                   else
+                       System.out.println("Valor fuera del rango :O ");
+               break; 
+               case 2: 
+                   if (x!=1)
+                       MuestraDigitos();
+                   else
+                       System.out.println("Valor fuera del rango :O ");
+               break; 
+               case 3: 
+                   if (x!=2)
+                       Menu();
+                   else
+                       System.out.println("Valor fuera del rango :O ");
+               break; 
+    }
+         }
+         public void Digitos(){
+             System.out.println("Ingrese un  numero no mayor a 100,000");
+             System.out.println("Ingrese el Usuario");
+             System.out.println("\n"+"\n");
+             numero = Integer.parseInt(lee.next());
+             if(numero<100000){
+             MenuDigitos();}
+             else if(numero>100000){
+                 System.out.println("Escriba un numero menor a 100,000");
+                 System.out.println("\n"+"\n");
+                 Digitos();
+             }
+         }
+         public void MuestraDigitos(){
+         valor=numero/10;
+             if(valor<1){
+             System.out.println("Solo tiene 1 digito");
+             System.out.println("\n"+"\n");
+         }
+             else if(valor>1){
+                 digitos=valor;
+                 while(digitos>=1){
+                 numero=numero/10;
+                 contador=contador+1;
+                 digitos=numero;
+                 }
+                     }
+             System.out.println("El numero ingresado, tiene:"+ contador +" digitos ");
+             System.out.println("");
+             MenuDigitos();
          }
 }
