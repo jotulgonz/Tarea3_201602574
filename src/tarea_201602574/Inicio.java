@@ -5,6 +5,7 @@
  */
 package tarea_201602574;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -110,7 +111,7 @@ public class Inicio {
                break; 
                case 3: 
                    if (x!=2)
-                       Descendente();
+                       Descendentes();
                    else
                        System.out.println("Valor fuera del rango :O ");
                break; 
@@ -122,45 +123,44 @@ public class Inicio {
                break; 
     }
          }
-         public void IngreseUsuarios(){
-             System.out.println("");
-             for(int i=0; i<5;i++){
-             Scanner sc = new Scanner(System.in);
-             System.out.println("Ingrese el Usuario");
-             usuarios[i] = sc.next();
-                          }
+         
+    public void IngreseUsuarios() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("");
+        for (int i=0;i<this.usuarios.length;i++) {
+            System.out.println((i+1)+". "+"Ingresa al usuario ");
+            this.usuarios[i]=sc.nextLine();
+            int num = 0;
+            while(num <i){
+                if(this.usuarios[i].equalsIgnoreCase(this.usuarios[num])){
+                    System.out.println("----------------------");
+                    System.out.println("Ya existe este usuario");
+                    System.out.println("----------------------");
+                    System.out.println((i+1)+". "+"Ingresa al usuario ");
+                    usuarios[i]=sc.nextLine();
+                    
+                    num =0;
+                }else{
+                    num++;
+                }    
+            }
+        }
+        MenuUsuarios();
+    }
+         public void Ascendentes (){
+             System.out.println("---------------------");
+             for(int i=usuarios.length-1;i>=0; i--) { 
+                 System.out.println((i+1)+". "+usuarios[i]);    
+             }
+             System.out.println("---------------------");
              MenuUsuarios();
          }
-         public void Descendente (){
-             String aux;
-             for(int i=0; i<=usuarios.length; i++) {
-                 for(int j=i+1; j<usuarios.length; j++) {
-                     if( usuarios[i].compareTo( usuarios[j] ) > 0 ) {
-                         aux   = usuarios[i];
-                         usuarios[i+1        ]  = usuarios[j];
-                         usuarios[i]= aux; 
-                }    
-            } 
-        }
-             System.out.println("\n array A ordenado: ");
-             for(int i=0; i<usuarios.length; i++)
-             {System.out.println(usuarios[i] ); }
-}
-         public void Ascendentes (){
-             String aux;
-             System.out.println("Listado Ascendentes de usuarios");
-             for(int a = 0; a>4;a++){
-                 for (int e=0; e>4-a;e++){
-                     if(usuarios[e].compareTo(usuarios[e+1])>0){
-                         aux= usuarios[e];
-                         usuarios[e]=usuarios[e+1];
-                         usuarios[e+1]=aux;
-                     }
-                 }
+         public void Descendentes (){
+             System.out.println("---------------------");
+             for (int i = 0; i < usuarios.length; i++) {
+                 System.out.println((i+1)+". "+usuarios[i]);
              }
-             for(String valor:usuarios){
-                 System.out.println(valor);
-             }
+             System.out.println("---------------------");
              MenuUsuarios();
          }
          public void MenuDigitos(){
@@ -258,7 +258,7 @@ public class Inicio {
              
              for(int i=0; i<3;i++){
              Scanner sc = new Scanner(System.in);
-             System.out.println("Ingrese los numeros");
+             System.out.println((i+1)+". Numero");
              digi[i] = sc.nextInt();
                           }
              System.out.println("\n"+"____________________________");
@@ -276,9 +276,9 @@ public class Inicio {
              }
          
                  }
+             System.out.println("EL orden es ");
              for (int i = 0; i < digi.length; i++) {
-                 System.out.println("EL orden es   "+digi[i]);
-                 System.out.println("");
+                 System.out.println((i+1)+". "+digi[i]);
              }
              System.out.println("\n"+"_____________________________");
              MenuTres();
@@ -317,12 +317,40 @@ public class Inicio {
              System.out.println("Notas De Estudiantes");
              for (int f = 0; f < matriz.length; f++) {
                  for (int c =1; c < 5; c++) {
-                     System.out.println("Ingrese Las notas");
+                     System.out.println("Ingrese la nota "+c+" del Estudiante "+(f+1));
                      matriz[f][c]=leeProm.nextInt();
-                     System.out.println("["+f+","+c+"]=" + matriz[f][c]);
-             System.out.println(matriz[f][c]);
+                     if (f==0) {
+                         System.out.println("Alumno "+(f+1));
+                         System.out.print("Nota "+c+" = ");
+                         System.out.println(matriz[f][c]);
+                     }
+                     if (f==1) {
+                         System.out.println("Alumno "+(f+1));
+                         System.out.print("Nota "+c+" = ");
+                         System.out.println(matriz[f][c]);
+                     }
+                     if (f==2) {
+                         System.out.println("Alumno "+(f+1));
+                         System.out.print("Nota "+c+" = ");
+                         System.out.println(matriz[f][c]);
+                     }
+                     if (f==3) {
+                         System.out.println("Alumno "+(f+1));
+                         System.out.print("Nota "+c+" = ");
+                         System.out.println(matriz[f][c]);
+                     }
+                     if (f==4) {
+                         System.out.println("Alumno "+(f+1));
+                         System.out.print("Nota "+c+" = ");
+                         System.out.println(matriz[f][c]);
+                     }
+                     if (f==5) {
+                         System.out.println("Alumno "+(f+1));
+                         System.out.print("Nota "+c+" = ");
+                         System.out.println(matriz[f][c]);
+                     }
+                     
                  }
-             
              }
              System.out.println("\n"+"\n");
          MenuPromedio();
